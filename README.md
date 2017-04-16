@@ -15,7 +15,7 @@ We have a sample for both **OWIN (classic .NET Framework)** and new **ASP.NET Co
 3. Add the [OWIN Startup class](Owin/DotvvmMvcIntegration/DotvvmMvcIntegration/Startup.cs) and call `app.UseDotVVM...`.
 
 4. Unload the project, edit the `.csproj` file and add the DotVVM Project guid (`94EE71E2-EE2A-480B-8704-AF46D2E58D94`) 
-as a first one in the `<ProjectTypeGuids>` element.
+as a first one in the `<ProjectTypeGuids>` element. (**optional** - only for Visual Studio Extension, DotVVM runtime will work correctly without this step. Also note that project will want to load without DotVVM for Visual Studio installed, so don't forget to warn your colleagues)
 It should look like this:
 
     ```
@@ -32,7 +32,7 @@ It should look like this:
     ```
 
 6. Create your [DotvvmStartup](Owin/DotvvmMvcIntegration/DotvvmMvcIntegration/DotvvmStartup.cs) file and register your DotVVM routes.
-Any request that doesn't match any DotVVM route, will be passed to the ASP.NET Web Forms handlers.
+Any request that doesn't match any DotVVM route, will be passed to the ASP.NET MVC handlers.
 
 <br />
 

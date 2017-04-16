@@ -40,7 +40,7 @@ Any request that doesn't match any DotVVM route, will be passed to the ASP.NET W
 
 1. Install the `DotVVM.AspNetCore` NuGet package.
 
-2. Register the DotVVM services in the `ConfigureServices` method in the [Startup.cs](src/AspNetCore/DotvvmMvcIntegration/DotvvmMvcIntegration/Startup.cs) file:
+2. Register the DotVVM services in the `ConfigureServices` method in the [Startup.cs](AspNetCore/DotvvmMvcIntegration/DotvvmMvcIntegration/Startup.cs) file:
 
 ```
 public void ConfigureServices(IServiceCollection services)

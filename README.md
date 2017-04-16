@@ -15,7 +15,10 @@ We have a sample for both **OWIN (classic .NET Framework)** and new **ASP.NET Co
 3. Add the [OWIN Startup class](Owin/DotvvmMvcIntegration/DotvvmMvcIntegration/Startup.cs) and call `app.UseDotVVM...`.
 
 4. Unload the project, edit the `.csproj` file and add the DotVVM Project guid (`94EE71E2-EE2A-480B-8704-AF46D2E58D94`) 
-as a first one in the `<ProjectTypeGuids>` element. (**optional** - only for Visual Studio Extension, DotVVM runtime will work correctly without this step. Also note that project will want to load without DotVVM for Visual Studio installed, so don't forget to warn your colleagues)
+as a first one in the `<ProjectTypeGuids>` element. 
+
+_This is only needed to get full editing experience in Visual Studio. If you don't have the [DotVVM for Visual Studio](https://www.dotvvm.com/landing/dotvvm-for-visual-studio-extension) installed, do not add this GUID otherwise you won't be able to load the project._
+
 It should look like this:
 
     ```

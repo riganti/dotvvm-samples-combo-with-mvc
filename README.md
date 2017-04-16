@@ -12,7 +12,7 @@ We have a sample for both **OWIN (classic .NET Framework)** and new **ASP.NET Co
 
 2. Install the `Microsoft.Owin.Host.SystemWeb` package if you already don't have it in your project.
 
-3. Add the [OWIN Startup class](src/Owin/DotvvmMvcIntegration/DotvvmMvcIntegration/Startup.cs) and call `app.UseDotVVM...`.
+3. Add the [OWIN Startup class](Owin/DotvvmMvcIntegration/DotvvmMvcIntegration/Startup.cs) and call `app.UseDotVVM...`.
 
 4. Unload the project, edit the `.csproj` file and add the DotVVM Project guid (`94EE71E2-EE2A-480B-8704-AF46D2E58D94`) 
 as a first one in the `<ProjectTypeGuids>` element.
@@ -31,7 +31,7 @@ It should look like this:
       </system.webServer>
     ```
 
-6. Create your [DotvvmStartup](src/Owin/DotvvmMvcIntegration/DotvvmMvcIntegration/DotvvmStartup.cs) file and register your DotVVM routes.
+6. Create your [DotvvmStartup](Owin/DotvvmMvcIntegration/DotvvmMvcIntegration/DotvvmStartup.cs) file and register your DotVVM routes.
 Any request that doesn't match any DotVVM route, will be passed to the ASP.NET Web Forms handlers.
 
 <br />
@@ -56,7 +56,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-3. Install the DotVVM middleware in the HTTP request pipeline in the `Configure` method in the [Startup.cs](src/AspNetCore/DotvvmMvcIntegration/DotvvmMvcIntegration/Startup.cs) file:
+3. Install the DotVVM middleware in the HTTP request pipeline in the `Configure` method in the [Startup.cs](AspNetCore/DotvvmMvcIntegration/DotvvmMvcIntegration/Startup.cs) file:
 
 ```
 public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -69,7 +69,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 }
 ```
 
-4. Create your [DotvvmStartup](src/AspNetCore/DotvvmMvcIntegration/DotvvmMvcIntegration/DotvvmStartup.cs) file and register your DotVVM routes.
+4. Create your [DotvvmStartup](AspNetCore/DotvvmMvcIntegration/DotvvmMvcIntegration/DotvvmStartup.cs) file and register your DotVVM routes.
 Any request that doesn't match any DotVVM route, will be passed to the next middleware.
 
 __To separate DotVVM views from the MVC views, we have placed DotVVM views in a folder called `DotVVM`. However, it is not necessary. 

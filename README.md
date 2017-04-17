@@ -1,6 +1,6 @@
 # DotVVM + ASP.NET MVC in one application
 
-This repo is a demo of how to combine DotVVM with existing ASP.NET MVC application.
+This repo is a demo of how to combine [DotVVM](https://github.com/riganti/dotvvm) with existing ASP.NET MVC application.
 
 We have a sample for both **OWIN (classic .NET Framework)** and new **ASP.NET Core** project types.
 
@@ -77,3 +77,7 @@ Any request that doesn't match any DotVVM route, will be passed to the next midd
 
 __To separate DotVVM views from the MVC views, we have placed DotVVM views in a folder called `DotVVM`. However, it is not necessary. 
 DotVVM doesn't care about where you have your views, so you can have views from both DotVVM and MVC in one folder.__
+
+<br />
+
+For more information about [DotVVM](https://github.com/riganti/dotvvm), visit the [DotVVM website](https://www.dotvvm.com).

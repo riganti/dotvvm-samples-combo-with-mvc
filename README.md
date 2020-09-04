@@ -1,12 +1,30 @@
 # DotVVM + ASP.NET MVC in one application
 
-This repo is a demo of how to combine [DotVVM](https://github.com/riganti/dotvvm) with existing ASP.NET MVC application.
+This repo shows how to use [DotVVM](https://github.com/riganti/dotvvm) together with ASP.NET MVC application in the same application.
 
-We have a sample for both **OWIN (classic .NET Framework)** and new **ASP.NET Core** project types.
+## Prerequisites
 
-<br />
+* Make sure you have installed [DotVVM for Visual Studio](https://www.dotvvm.com/install)
 
-## OWIN + .NET 4.5: Steps Required to Add DotVVM in Existing ASP.NET MVC App
+## How to run the sample
+
+1. [Open the GitHub repo in Visual Studio](git-client://clone/?repo=https%3A%2F%2Fgithub.com%2Friganti%2Fdotvvm-samples-combo-with-mvc)
+or 
+`git clone https://github.com/riganti/dotvvm-samples-combo-with-mvc.git`
+
+2. Open `AspNetCore/DotvvmMvcIntegration/DotvvmMvcIntegration.sln` (ASP.NET Core) or `Owin/DotvvmMvcIntegration/DotvvmMvcIntegration.sln` (.NET Framework with OWIN)
+
+3. Right-click the `DotvvmMvcIntegration` project and select **View > View in Browser**
+
+## What you can learn in the sample
+
+* How to use DotVVM together with other frameworks like ASP.NET MVC in the same app
+
+---
+
+# Steps Required to Add DotVVM in Existing ASP.NET MVC App
+
+## OWIN (.NET Framework)
 
 1. Install the `DotVVM.Owin` NuGet package.
 
@@ -37,9 +55,7 @@ It should look like this:
 6. Create your [DotvvmStartup](Owin/DotvvmMvcIntegration/DotvvmMvcIntegration/DotvvmStartup.cs) file and register your DotVVM routes.
 Any request that doesn't match any DotVVM route, will be passed to the ASP.NET MVC handlers.
 
-<br />
-
-## ASP.NET Core: Steps Required to Add DotVVM in Existing ASP.NET MVC Core App
+## ASP.NET Core
 
 1. Install the `DotVVM.AspNetCore` NuGet package.
 
@@ -50,10 +66,7 @@ public void ConfigureServices(IServiceCollection services)
 {
 	...
 	
-	services.AddDotVVM(options =>
-	{
-		options.AddDefaultTempStorages("Temp");
-	});
+	services.AddDotVVM<DotvvmStartup>();
 	
 	...
 }
@@ -75,9 +88,16 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 4. Create your [DotvvmStartup](AspNetCore/DotvvmMvcIntegration/DotvvmMvcIntegration/DotvvmStartup.cs) file and register your DotVVM routes.
 Any request that doesn't match any DotVVM route, will be passed to the next middleware.
 
-__To separate DotVVM views from the MVC views, we have placed DotVVM views in a folder called `DotVVM`. However, it is not necessary. 
-DotVVM doesn't care about where you have your views, so you can have views from both DotVVM and MVC in one folder.__
+_To separate DotVVM views from the MVC views, we have placed DotVVM views in a folder called `DotVVM`. However, it is not necessary. 
+DotVVM doesn't care about where you have your views, so you can have views from both DotVVM and MVC in one folder._
 
-<br />
+---
 
-For more information about [DotVVM](https://github.com/riganti/dotvvm), visit the [DotVVM website](https://www.dotvvm.com).
+## Other resources
+
+* [Gitter Chat](https://gitter.im/riganti/dotvvm)
+* [DotVVM Official Website](https://www.dotvvm.com)
+* [DotVVM Documentation](https://www.dotvvm.com/docs)
+* [DotVVM GitHub](https://github.com/riganti/dotvvm)
+* [Twitter @dotvvm](https://twitter.com/dotvvm)
+* [Samples](https://www.dotvvm.com/samples)

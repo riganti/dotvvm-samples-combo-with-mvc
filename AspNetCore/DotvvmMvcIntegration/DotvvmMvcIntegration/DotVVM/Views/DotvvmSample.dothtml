@@ -12,6 +12,8 @@
     <h1>Hello from DotVVM</h1>
 
     <a href="/">Go back to MVC page</a>
+    <hr />
+    <dot:RouteLink RouteName="Login">Go to login page</dot:RouteLink>
 
 </body>
 </html>

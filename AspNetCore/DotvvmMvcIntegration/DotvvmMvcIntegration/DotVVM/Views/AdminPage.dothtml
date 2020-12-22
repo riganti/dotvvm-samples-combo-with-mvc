@@ -1,0 +1,40 @@
+﻿@viewModel DotvvmMvcIntegration.DotVVM.ViewModels.AdminPageViewModel, DotvvmMvcIntegration
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+    <dot:Button Text="Sign Out" Click="{command: SignOut()}" />
+
+    <hr />
+
+    <dot:Button Text="Generate JWT token for API" Click="{command: GenerateJwt()}" />
+
+    <pre>{{value:Token}}</pre>
+
+    <input type="button" value="Call API" onclick="callApi();" /> 
+
+    <script type="text/javascript">
+    function callApi() {
+        fetch('/api/adminapi', {
+            method: 'get',
+            headers: new Headers({
+                'Authorization': 'Bearer ' + dotvvm.viewModels.root.viewModel.Token(),
+                'Content-Type': 'application/json'
+            })
+        }).then(function (r) {
+            r.text().then(function (t) {
+                alert(r.status + ' ' + t);
+            });
+        });
+    }
+    </script>
+</body>
+</html>
+
+

@@ -20,6 +20,8 @@ namespace DotvvmMvcIntegration
         private void ConfigureRoutes(DotvvmConfiguration config, string applicationPath)
         {
             config.RouteTable.Add("DotvvmSample", "DotvvmSample", "DotVVM/Views/DotvvmSample.dothtml");
+            config.RouteTable.Add("Login", "Login", "DotVVM/Views/Login.dothtml");
+            config.RouteTable.Add("AdminPage", "AdminPage", "DotVVM/Views/AdminPage.dothtml");
 
             // URLs that are not registered in DotVVM are passed to the next middleware (MVC)
         }

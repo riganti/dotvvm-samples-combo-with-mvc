@@ -31,12 +31,11 @@ namespace DotvvmMvcIntegration.DotVVM.Helpers
             this.viewEngine = viewEngine;
         }
 
-        public async Task RenderAction(string controllerName, string actionName, RouteValueDictionary parameters, object model, TextWriter writer)
+        public async Task RenderView(string controllerName, string viewName, RouteValueDictionary parameters, object model, TextWriter writer)
         {
             // Build the route data, pointing to the dummy controller
             var routeData = new RouteData();
             routeData.Values.Add("controller", controllerName);
-            routeData.Values.Add("action", actionName);
             foreach (var pair in parameters)
             {
                 routeData.Values[pair.Key] = pair.Value;
@@ -48,11 +47,11 @@ namespace DotvvmMvcIntegration.DotVVM.Helpers
             var actionContext = new ActionContext(context, routeData, new ControllerActionDescriptor()
             {
                 ControllerName = controllerName,
-                ActionName = actionName
+                ActionName = viewName
             });
 
             // Find the partial view
-            var view = FindPartialView(actionContext, actionName);
+            var view = FindPartialView(actionContext, viewName);
 
             // create the view context and pass in the model
             var viewContext = new ViewContext(actionContext, view, new ViewDataDictionary(modelMetadataProvider, new ModelStateDictionary()) { Model = model }, new TempDataDictionary(context, tempDataProvider), writer, new HtmlHelperOptions());

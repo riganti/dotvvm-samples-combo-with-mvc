@@ -1,20 +1,18 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Web.Mvc;
-using System.Web.Mvc.Html;
-using System.Web.Routing;
+﻿using System.IO;
+using System.Threading.Tasks;
 using DotVVM.Framework.Binding;
 using DotVVM.Framework.Binding.Expressions;
 using DotVVM.Framework.Compilation.ControlTree;
 using DotVVM.Framework.Controls;
 using DotVVM.Framework.Hosting;
 using DotvvmMvcIntegration.DotVVM.Helpers;
+using Microsoft.AspNetCore.Routing;
 
 namespace DotvvmMvcIntegration.DotVVM.Controls
 {
-    public class RenderMvcAction : DotvvmControl
+    public class RenderMvcView : DotvvmControl
     {
+        private readonly MvcUtility mvcUtility;
 
         [MarkupOptions(AllowBinding = false)]
         public string ControllerName
@@ -23,7 +21,7 @@ namespace DotvvmMvcIntegration.DotVVM.Controls
             set { SetValue(ControllerNameProperty, value); }
         }
         public static readonly DotvvmProperty ControllerNameProperty
-            = DotvvmProperty.Register<string, RenderMvcAction>(c => c.ControllerName, null);
+            = DotvvmProperty.Register<string, RenderMvcView>(c => c.ControllerName, null);
 
         [MarkupOptions(AllowBinding = false)]
         public string ViewName
@@ -32,12 +30,12 @@ namespace DotvvmMvcIntegration.DotVVM.Controls
             set { SetValue(ViewNameProperty, value); }
         }
         public static readonly DotvvmProperty ViewNameProperty
-            = DotvvmProperty.Register<string, RenderMvcAction>(c => c.ViewName, null);
+            = DotvvmProperty.Register<string, RenderMvcView>(c => c.ViewName, null);
 
         [PropertyGroup("Param-")]
         [MarkupOptions(AllowBinding = false)]
         public VirtualPropertyGroupDictionary<object> Params => new VirtualPropertyGroupDictionary<object>(this, ParamsGroupDescriptor);
-        public static DotvvmPropertyGroup ParamsGroupDescriptor = DotvvmPropertyGroup.Register<object, RenderMvcAction>("Param-", nameof(Params));
+        public static DotvvmPropertyGroup ParamsGroupDescriptor = DotvvmPropertyGroup.Register<object, RenderMvcView>("Param-", nameof(Params));
 
         [MarkupOptions(AllowBinding = false)]
         public object Model
@@ -46,8 +44,13 @@ namespace DotvvmMvcIntegration.DotVVM.Controls
             set { SetValue(ModelProperty, value); }
         }
         public static readonly DotvvmProperty ModelProperty
-            = DotvvmProperty.Register<object, RenderMvcAction>(c => c.Model, null);
+            = DotvvmProperty.Register<object, RenderMvcView>(c => c.Model, null);
 
+
+        public RenderMvcView(MvcUtility mvcUtility)
+        {
+            this.mvcUtility = mvcUtility;
+        }
 
 
         protected override void RenderContents(IHtmlWriter writer, IDotvvmRequestContext context)
@@ -60,7 +63,7 @@ namespace DotvvmMvcIntegration.DotVVM.Controls
             }
 
             var w = new StringWriter();
-            MvcUtility.RenderAction(ControllerName, ViewName, parameters, Model, w);
+            Task.Run(async () => await mvcUtility.RenderView(ControllerName, ViewName, parameters, Model, w)).Wait();
             writer.WriteUnencodedText(w.ToString());
         }
 

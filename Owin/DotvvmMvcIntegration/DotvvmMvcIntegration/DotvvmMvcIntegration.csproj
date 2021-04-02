@@ -157,7 +157,7 @@
     <Compile Include="Controllers\ComponentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DotvvmStartup.cs" />
-    <Compile Include="DotVVM\Controls\RenderMvcAction.cs" />
+    <Compile Include="DotVVM\Controls\RenderMvcView.cs" />
     <Compile Include="DotVVM\Helpers\MvcUtility.cs" />
     <Compile Include="DotVVM\ViewModels\DotvvmSampleViewModel.cs" />
     <Compile Include="Global.asax.cs">

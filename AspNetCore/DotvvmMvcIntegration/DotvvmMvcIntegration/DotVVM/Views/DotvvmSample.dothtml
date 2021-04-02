@@ -18,7 +18,7 @@
     <hr />
     <fieldset>
         <legend>Rendered MVC view</legend>
-        <cc:RenderMvcAction ControllerName="Component" ViewName="Detail" Param-Id="10" Model="{resource: MyModel}" />
+        <cc:RenderMvcView ControllerName="Component" ViewName="Detail" Param-Id="10" Model="{resource: MyModel}" />
     </fieldset>
 
 </body>

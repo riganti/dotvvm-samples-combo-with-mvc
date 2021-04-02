@@ -9,7 +9,7 @@ namespace DotvvmMvcIntegration.DotVVM.Helpers
 {
     public static class MvcUtility
     {
-        public static void RenderAction(string controllerName, string actionName, RouteValueDictionary parameters, object model, TextWriter writer)
+        public static void RenderView(string controllerName, string viewName, RouteValueDictionary parameters, object model, TextWriter writer)
         {
             // Get the HttpContext
             var httpContextBase = new HttpContextWrapper(HttpContext.Current);
@@ -17,7 +17,6 @@ namespace DotvvmMvcIntegration.DotVVM.Helpers
             // Build the route data, pointing to the dummy controller
             var routeData = new RouteData();
             routeData.Values.Add("controller", controllerName);
-            routeData.Values.Add("action", actionName);
             foreach (var pair in parameters)
             {
                 routeData.Values[pair.Key] = pair.Value;
@@ -29,7 +28,7 @@ namespace DotvvmMvcIntegration.DotVVM.Helpers
             var controllerContext = new ControllerContext(requestContext, (ControllerBase)controller);
             
             // Find the partial view
-            var view = FindPartialView(controllerContext, actionName);
+            var view = FindPartialView(controllerContext, viewName);
             
             // create the view context and pass in the model
             var viewContext = new ViewContext(controllerContext, view, new ViewDataDictionary() { Model = model }, new TempDataDictionary(), writer);

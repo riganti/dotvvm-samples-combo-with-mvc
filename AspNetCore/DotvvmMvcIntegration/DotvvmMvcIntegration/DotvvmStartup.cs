@@ -30,7 +30,7 @@ namespace DotvvmMvcIntegration
         private void ConfigureControls(DotvvmConfiguration config, string applicationPath)
         {
             // register code-only controls and markup controls
-            config.Markup.AddCodeControls("cc", typeof(RenderMvcAction));
+            config.Markup.AddCodeControls("cc", typeof(RenderMvcView));
         }
 
         private void ConfigureResources(DotvvmConfiguration config, string applicationPath)

@@ -15,5 +15,11 @@
     <hr />
     <dot:RouteLink RouteName="Login">Go to login page</dot:RouteLink>
 
+    <hr />
+    <fieldset>
+        <legend>Rendered MVC view</legend>
+        <cc:RenderMvcAction ControllerName="Component" ViewName="Detail" Param-Id="10" Model="{resource: MyModel}" />
+    </fieldset>
+
 </body>
 </html>

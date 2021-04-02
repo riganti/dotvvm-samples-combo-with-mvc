@@ -1,0 +1,9 @@
+﻿@model DotvvmMvcIntegration.Models.DetailComponentModel
+@{
+    Layout = null;
+}
+
+<h1>@Model.Title</h1>
+<p>@Model.Description</p>
+
+<p>Param from route: @ViewContext.RouteData.Values["id"]</p>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DotVVM.Framework.Configuration;
 using DotVVM.Framework.Routing;
+using DotvvmMvcIntegration.DotVVM.Controls;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DotvvmMvcIntegration
@@ -29,6 +30,7 @@ namespace DotvvmMvcIntegration
         private void ConfigureControls(DotvvmConfiguration config, string applicationPath)
         {
             // register code-only controls and markup controls
+            config.Markup.AddCodeControls("cc", typeof(RenderMvcAction));
         }
 
         private void ConfigureResources(DotvvmConfiguration config, string applicationPath)

@@ -11,7 +11,14 @@
 
     <h1>Hello from DotVVM</h1>
 
-    <a href="/">Go back to MVC page</a>
+    <p><a href="/">Go back to MVC page</a></p>
+
+    <hr />
+
+    <fieldset>
+        <legend>Rendered MVC view</legend>
+        <cc:RenderMvcAction ControllerName="Component" ViewName="Detail" Param-Id="10" Model="{resource: MyModel}" />
+    </fieldset>
 
 </body>
 </html>

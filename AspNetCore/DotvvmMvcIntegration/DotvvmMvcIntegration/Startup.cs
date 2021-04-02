@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DotVVM.Framework.Hosting;
+using DotvvmMvcIntegration.DotVVM.Helpers;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -63,6 +64,9 @@ namespace DotvvmMvcIntegration
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwt.Key))
                     };                
                 });
+
+            services.AddHttpContextAccessor();
+            services.AddTransient<MvcUtility>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
